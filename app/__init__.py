@@ -9,11 +9,13 @@ from config import Config
 
 db = SQLAlchemy()
 # migrate = Migrate()
-# login = LoginManager()
 # login.login_view = 'auth.login'
-# bootstrap = Bootstrap()
 
 app = Flask(__name__)
+app.config.from_object(Config)
+login = LoginManager(app)
+bootstrap = Bootstrap(app)
+
 
 
 from app import routes, models
