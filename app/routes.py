@@ -5,5 +5,11 @@ from app import app
 
 @app.route('/')
 @app.route('/home')
-def index():
-    return 'SPAM'
+def home():
+    climb = [{
+        'climb_name': 'Coat hanger abortion',
+        'location': 'Imagination',
+        'description': 'A totally badass climb that will destroy you',
+        'getting_there': 'Just dream...'
+    }]
+    return render_template('home.html', title='OW! NH', climbs=climb)
