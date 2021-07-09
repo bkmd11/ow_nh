@@ -1,0 +1,23 @@
+h1 {
+  text-align: center;
+  background-color: green;
+  padding: 70px 0;
+  font-size: xxx-large;
+  height: 60px;
+}
+
+h2 {
+  font-size: xx-large;
+}
+
+h3 {
+  font-size: x-large}
+
+body {
+  text-align: center;
+  background-color: grey;
+}
+
+b {
+  font-size: larger;
+}
