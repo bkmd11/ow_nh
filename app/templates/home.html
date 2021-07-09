@@ -10,6 +10,7 @@
         <div>
             <h2>Name: {{ climb.climb_name }}</h2>
             <h3>Location: {{ climb.location }}</h3>
+            <img src="{{ url_for('static', filename=climb.picture) }}"/>
             <p><b>Description:</b> {{ climb.description }}</p>
             <p><b>Getting There:</b> {{ climb.getting_there }}</p>
         </div>

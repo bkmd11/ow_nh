@@ -10,6 +10,7 @@ def home():
         'climb_name': 'Coat hanger abortion',
         'location': 'Imagination',
         'description': 'A totally badass climb that will destroy you',
-        'getting_there': 'Just dream...'
+        'getting_there': 'Just dream...',
+        'picture':'unknown_willard.jpg'
     }]
     return render_template('home.html', title='OW! NH', climbs=climb)
