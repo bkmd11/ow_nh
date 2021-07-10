@@ -10,3 +10,9 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
 
 
+class NewRouteForm(FlaskForm):
+    name = StringField('Route Name', validators=[DataRequired()])
+    location = StringField('Location', validators=[DataRequired()])
+    picture_name = StringField('Picture File Name')
+    description = StringField('Description', validators=[DataRequired()])
+    directions = StringField('Getting There', validators=[DataRequired()])

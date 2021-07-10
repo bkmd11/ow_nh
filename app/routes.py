@@ -3,9 +3,9 @@ from flask_login import current_user, login_user, login_required
 
 from werkzeug.urls import url_parse
 
-from app import app
-from app.forms import LoginForm
-from app.models import Admin
+from app import app, db
+from app.forms import LoginForm, NewRouteForm
+from app.models import Admin, Climb
 
 
 @app.route('/')
@@ -43,4 +43,21 @@ def login():
 @app.route('/add_climb', methods=['GET', 'POST'])
 @login_required
 def add_climb():
-    pass
+    # todo: make template
+    form = NewRouteForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        location = form.location.data
+        picture_name = form.picture_name.data
+        description = form.description.data
+        directions = form.directions.data
+
+        new_climb = Climb(climb_name=name,
+                          location=location,
+                          picture_path=picture_name,
+                          description=description,
+                          getting_there=directions)
+
+        db.session.add(new_climb)
+        db.session.commit()
+    return render_template('add_climb.html', form=form)

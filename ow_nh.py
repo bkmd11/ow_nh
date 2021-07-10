@@ -11,7 +11,7 @@ def make_shell_context():
 
 # In no particular order
 # Todo:
-#  make prettier
+#  make prettier ----
 #  add admin feature to update
 #  actually build DB
 #  set up email contact in case anyone like it?
