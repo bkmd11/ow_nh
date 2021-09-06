@@ -12,7 +12,7 @@ from app.models import Admin, Climb
 @app.route('/home')
 def home():
     climb = [{
-        'climb_name': 'Unknown OffWidth Willard Pond',
+        'climb_name': 'The Pink One in the Corner',
         'location': 'Willard Pond',
         'description': '''Start with a decent hand and fist jam. Kick a foot up into the constriction 
                         and try to find the good holds''',
