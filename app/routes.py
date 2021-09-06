@@ -2,6 +2,7 @@ from flask import render_template, url_for, redirect, flash, request
 from flask_login import current_user, login_user, login_required
 
 from werkzeug.urls import url_parse
+from werkzeug.utils import secure_filename
 
 from app import app, db
 from app.forms import LoginForm, NewRouteForm
@@ -47,9 +48,12 @@ def add_climb():
     if form.validate_on_submit():
         name = form.name.data
         location = form.location.data
-        picture_name = form.picture_name.data
         description = form.description.data
         directions = form.directions.data
+        picture_file = request.files['picture']
+        picture_name = secure_filename(picture_file.filename)
+
+        picture_file.save(picture_name)
 
         new_climb = Climb(climb_name=name,
                           location=location,
@@ -59,4 +63,5 @@ def add_climb():
 
         db.session.add(new_climb)
         db.session.commit()
+        return redirect(url_for('home'))
     return render_template('add_climb.html', form=form)
