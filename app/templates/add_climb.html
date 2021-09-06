@@ -1,0 +1,12 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h3>Admin Home</h3>
+    {% if form %}
+        {{ wtf.quick_form(form) }}
+    <br>
+    {% endif %}
+    <br>
+</body>

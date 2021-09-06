@@ -43,7 +43,6 @@ def login():
 @app.route('/add_climb', methods=['GET', 'POST'])
 @login_required
 def add_climb():
-    # todo: make template
     form = NewRouteForm()
     if form.validate_on_submit():
         name = form.name.data
