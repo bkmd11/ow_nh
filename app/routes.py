@@ -8,18 +8,21 @@ from app import app, db
 from app.forms import LoginForm, NewRouteForm
 from app.models import Admin, Climb
 
+import os
+
 
 @app.route('/')
 @app.route('/home')
 def home():
-    climb = [{
-        'climb_name': 'The Pink One in the Corner',
-        'location': 'Willard Pond',
-        'description': '''Start with a decent hand and fist jam. Kick a foot up into the constriction 
-                        and try to find the good holds''',
-        'getting_there': 'Just dream...',
-        'picture': 'unknown_willard.jpg'
-    }]
+    # climb = [{
+    #     'climb_name': 'The Pink One in the Corner',
+    #     'location': 'Willard Pond',
+    #     'description': '''Start with a decent hand and fist jam. Kick a foot up into the constriction
+    #                     and try to find the good holds''',
+    #     'getting_there': 'Just dream...',
+    #     'picture': 'unknown_willard.jpg'
+    # }]
+    climb = Climb.query.all()
     return render_template('home.html', title='OW! NH', climbs=climb)
 
 
@@ -53,7 +56,7 @@ def add_climb():
         picture_file = request.files['picture']
         picture_name = secure_filename(picture_file.filename)
 
-        picture_file.save(picture_name)
+        picture_file.save(os.path.join('app/static/', picture_name))
 
         new_climb = Climb(climb_name=name,
                           location=location,
@@ -65,3 +68,4 @@ def add_climb():
         db.session.commit()
         return redirect(url_for('home'))
     return render_template('add_climb.html', form=form)
+# TODO need to build in security to this
